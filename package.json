@@ -1,0 +1,19 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "api for todo-list app",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js"
+  },
+  "author": "thitastic",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongodb": "^4.8.1",
+    "nodemon": "^2.0.19"
+  }
+}
