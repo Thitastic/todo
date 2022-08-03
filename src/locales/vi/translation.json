@@ -1,0 +1,51 @@
+{
+    "settings":{
+        "todoList": "Nhắc việc",
+        "settings": "Cài đặt",
+        "language": "Ngôn ngữ",
+        "new": "Thêm mới"
+    },
+    "login":{
+        "title": "Đăng nhập tài khoản",
+        "yourEmail": "Email",
+        "password": "Mật khẩu",
+        "login": "Đăng nhập",
+        "register": "Tạo tài khoản mới"
+    },
+    "register":{
+        "title": "Tạo tài khoản mới",
+        "password": "Mật khẩu",
+        "username": "Tên người dùng",
+        "confirmPassword": "Nhập lại mật khẩu",
+        "register": "Đăng ký",
+        "login": "Đăng nhập tài khoản của bạn"
+    },
+    "todo" :{
+        "hoursLeft": "giờ còn lại",
+        "edit": "Thay đổi",
+        "markDone": "Đã làm xong",
+        "onGoing": "Đang làm",
+        "finished": "Kết thúc",
+        "late": "Trễ hạn"
+    },
+    "form": {
+        "titleNew": "Tạo mới",
+        "titleEdit": "Chỉnh sửa",
+        "title": "Tiêu đề",
+        "desc": "Mô tả",
+        "priority": "Ưu tiên",
+        "priorityLow": "Thấp",
+        "priorityMedium": "Trung bình",
+        "priorityHigh": "Cao",
+        "priorityImp": "Quan trọng",
+        "duration": "Thời hạn",
+        "create": "Tạo",
+        "save": "Lưu",
+        "delete": "Xóa"
+    },
+    "msg":{
+        "usernameExist": "Tài khoản đã tồn tại",
+        "emailExist": "Email đã tồn tại",
+        "passwordNotmatch": "Mật khẩu không khớp"
+    }
+}
