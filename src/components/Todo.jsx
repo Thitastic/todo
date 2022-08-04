@@ -4,9 +4,11 @@ import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 import {connect} from 'react-redux'
 import Handle from './Handle'
+import { useState } from "react"
 const Todo = (props) => {
 
     const history = useNavigate()
+    const [todoStatus, setTodoStatus] = useState(props.todo._status)
 
     /**
      * 
@@ -36,16 +38,20 @@ const Todo = (props) => {
         history("/edit")
     }
 
-    const goUpdateStatus = async (stat) =>{
-        const changes = {id: props.todo._id, status: "finished"}
-        await Handle.updateStatus(changes)
+    const goUpdateStatus = async (status) =>{
+        const changes = {id: props.todo._id, status: status}
+        const res = await Handle.updateStatus(changes)
+        if(res.status === 200){
+            setTodoStatus(status)
+            console.log(todoStatus)
+        }
     }
 
     const { t } = useTranslation()
 
     //Render status
     let elStatus
-    switch (props.todo._status) {
+    switch (todoStatus) {
         case "ongoing":
             elStatus = (
                 <div className="task__priority flex justify-between p-2 rounded-[50%] bg-emerald-400">
@@ -112,21 +118,19 @@ const Todo = (props) => {
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                     </Button>
                 </Tooltip>
-                {props.todo._status === "ongoing" ?
+                {todoStatus === "ongoing" ?
                     <Tooltip content={t("todo.markDone")}>
-                    <Button color="success" size="xs" pill={true} onClick={()=>goUpdateStatus()}>
+                    <Button color="success" size="xs" pill={true} onClick={()=>goUpdateStatus("finished")}>
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                     </Button>
                 </Tooltip>
                 :
-                <Tooltip content="Restart">
-                    <Button color="purple" size="xs" pill={true} onClick={()=>goUpdateStatus()}>
+                <Tooltip content={t("todo.restart")}>
+                    <Button color="purple" size="xs" pill={true} onClick={()=>goUpdateStatus("ongoing")}>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                     </Button>
                 </Tooltip>
                  }
-                
-                
             </div>
         </div>
     )

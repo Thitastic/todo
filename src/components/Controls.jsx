@@ -1,19 +1,24 @@
 import { useTranslation } from 'react-i18next'
-import { Button, Tooltip, Avatar, Dropdown } from 'flowbite-react'
+import { Button, Tooltip, Avatar, Dropdown, Spinner} from 'flowbite-react'
 import { useNavigate } from 'react-router-dom'
 import {connect} from 'react-redux'
 import Handle from './Handle'
+import { useState } from 'react'
 const Controls = (props) => {
     const { t } = useTranslation()
     const navigate = useNavigate()
 
+    const [isLogout, setIsLogout] = useState(false)
+
     const logout = async () =>{
+        setIsLogout(true)
         const result = await Handle.logout(localStorage.getItem("token"))
         console.log(result)
         if(result===200){
             localStorage.removeItem("token")
             props.auth(false)
         }
+        setIsLogout(false)
     }
 
     if(props.userAuth){
@@ -35,7 +40,7 @@ const Controls = (props) => {
                     }
                 >
                     <Dropdown.Item onClick={()=>logout()}>
-                        Log out
+                        {isLogout && <Spinner size="sm" aria-label="Default status example" /> }Log out
                     </Dropdown.Item>
                 </Dropdown>
                 <Tooltip content={t('settings.new')}>

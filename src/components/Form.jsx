@@ -139,12 +139,15 @@ const Form = (props) => {
 
                         </div>
                     </div>
-                    <Button onClick={() => goUpdate()}>
-                        {props.todo ? t("form.save") : t("form.create") }
-                    </Button>
+                    <div className="flex justify-end gap-5">
+                    
                     {
                         props.todo ? <Button color="failure" onClick={() => goDelete()}>{t("form.delete") }</Button> : ""
                     }
+                    <Button onClick={() => goUpdate()}>
+                        {props.todo ? t("form.save") : t("form.create") }
+                    </Button>
+                    </div>
                 </form>
             </div>
         </div>
