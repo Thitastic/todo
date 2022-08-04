@@ -14,7 +14,7 @@ route.get("/",async (req, res)=>{
  * If success: @return a token
  * If fail: @return 0
  */
-route.post("/login/s", async (req, res) =>{
+route.post("/login/", async (req, res) =>{
     res.send(await verify(req.body.user))
 } )
 
@@ -24,7 +24,7 @@ route.post("/login/s", async (req, res) =>{
  * If success: @return a token
  * If fail : @return 0
  */
- route.post("/login/t", async (req, res) =>{
+ route.post("/login/token", async (req, res) =>{
     res.send(await verifyToken(req.body.token))
 } )
 
@@ -131,13 +131,10 @@ const verifyToken = async (token) =>{
         await client.connect()
         const users = client.db('todo').collection('user')
         const auth = await users.find({_token: token}).toArray()
-        console.log(">>>>> LENGTH ", auth.length)
         if(auth.length < 1){
-            console.log(">>>FALSE")
             return 0
         }
         else{
-            console.log(">>>TRUE")
             const newToken = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2)
             users.updateOne(
                 {_token: token},
@@ -148,7 +145,7 @@ const verifyToken = async (token) =>{
                     }
                 }
             )
-            return newToken
+            return await users.find({_token: newToken}).toArray()
         }
     } catch (error) {
         console.error(error)
