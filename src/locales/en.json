@@ -1,0 +1,58 @@
+{
+    "settings":{
+        "todoList": "Todo List",
+        "settings": "Settings",
+        "language": "Language",
+        "new": "New task"
+    },
+    "login":{
+        "title": "Sign in your account",
+        "yourEmail": "Email",
+        "password": "Password",
+        "login": "Login",
+        "register": "Register new account"
+    },
+    "register":{
+        "title": "Create new account",
+        "password": "Password",
+        "username": "Username",
+        "confirmPassword": "Confirm password",
+        "register": "Register",
+        "login": "Login your account"
+    },
+    "todo" :{
+        "hoursLeft": "hours left",
+        "edit": "Edit",
+        "markDone": "Mark as done",
+        "onGoing": "On Going",
+        "finished": "Finished",
+        "late": "Late",
+        "restart": "Restart"
+    },
+    "form": {
+        "titleNew": "Create new task",
+        "titleEdit": "Edit task",
+        "title": "Title",
+        "desc": "Description",
+        "priority": "Priority",
+        "priorityLow": "Low",
+        "priorityMedium": "Medium",
+        "priorityHigh": "High",
+        "priorityImp": "Important",
+        "duration": "Duration",
+        "create": "Create",
+        "save": "Save",
+        "delete": "Delete"
+    },
+    "msg":{
+        "usernameExist": "Username already taken!",
+        "emailExist": "Email is exist",
+        "passwordNotmatch": "Password not matched",
+        "passwordBlank": "Password blank"
+    },
+    "emptyCta":{
+        "title": "Welcome to Todo.com",
+        "subtitle": "You didn't make any todo yet!",
+        "create": "Create new"
+    }
+}
