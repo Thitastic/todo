@@ -54,5 +54,12 @@
         "title": "에 오신 것을 환영합니다 Todo.com",
         "subtitle": "아직 할 일을 하지 않았습니다!",
         "create": "새로 만들기"
+    },
+    "documentTitle":{
+        "login" : "로그인",
+        "register" : "등록하다",
+        "dashboard": "계기반",
+        "new": "새로운",
+        "edit": "편집하다"
     }
 }

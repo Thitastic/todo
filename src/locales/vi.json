@@ -54,5 +54,12 @@
         "title": "Chào mừng trở lại Todo.com",
         "subtitle": "Bạn chưa tạo công việc nào!",
         "create": "Tạo mới"
+    },
+    "documentTitle":{
+        "login" : "Đăng nhập",
+        "register" : "Đăng ký",
+        "dashboard": "Tổng quan",
+        "new": "Thêm",
+        "edit": "Sửa"
     }
 }

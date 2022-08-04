@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet'
 import Todo from '../../components/Todo'
 import Handle from './handle'
 import { connect } from 'react-redux'
 import Empty from '../../components/Empty'
 import Skeleton from '../../components/Skeleton'
+import { useTranslation } from 'react-i18next'
 const Dashboard = (props) => {
-
+    const {t} = useTranslation()
     const [todos, setTodos] = useState([])
     const [isLoad, setIsload] = useState(false)
 
@@ -39,6 +41,9 @@ const Dashboard = (props) => {
 
     return (
         <>
+            <Helmet>
+                <title>TODO | {t("documentTitle.dashboard")}</title>
+            </Helmet>
             {isLoad ? <Skeleton /> : initView()}
         </>
     )

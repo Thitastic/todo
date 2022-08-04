@@ -3,15 +3,11 @@ import { Link } from "react-router-dom"
 import { Button, Label, TextInput, Spinner } from "flowbite-react"
 import Handle from './handle'
 import { sha256 } from "js-sha256"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import {connect} from 'react-redux'
-
+import { Helmet } from "react-helmet"
 const Login = (props) => {
     const {t} = useTranslation()
-
-    useEffect(()=>{
-        document.title = "TODO | Login"
-    })
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -36,6 +32,9 @@ const Login = (props) => {
 
     return (
         <div className="login flex justify-center mt-10">
+            <Helmet>
+                <title>TODO | {t("documentTitle.login")}</title>
+            </Helmet>
             <div className="flex flex-col gap-5 w-[70%] border-primary-500 border-2 border-solid rounded-md p-5">
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {t("login.title")}

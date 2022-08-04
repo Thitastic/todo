@@ -1,12 +1,14 @@
 import Form from '../../components/Form'
 import {connect} from 'react-redux'
-import { useEffect } from 'react'
+import { Helmet } from 'react-helmet'
+import { useTranslation } from 'react-i18next'
 const New = (props) =>{
-    useEffect(()=>{
-        document.title = "TODO | New"
-    })
+    const {t} = useTranslation()
     return(
         <div className="new">
+            <Helmet>
+                <title>TODO | {t("documentTitle.new")}</title>
+            </Helmet>
             <Form todo={null} auth={props.user} />
         </div>
     )

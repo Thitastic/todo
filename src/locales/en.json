@@ -54,5 +54,12 @@
         "title": "Welcome to Todo.com",
         "subtitle": "You didn't make any todo yet!",
         "create": "Create new"
+    },
+    "documentTitle":{
+        "login" : "Login",
+        "register" : "Register",
+        "dashboard": "Dashboard",
+        "new": "New",
+        "edit": "Edit"
     }
 }

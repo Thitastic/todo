@@ -1,20 +1,15 @@
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
-import { Button, Label, TextInput, Toast, Spinner} from "flowbite-react"
+import { Button, Label, TextInput, Spinner} from "flowbite-react"
+import { Helmet } from "react-helmet"
 import Handle from './handle'
-import { useEffect, useState } from "react"
+import {useState } from "react"
 import { sha256 } from 'js-sha256'
-import { useNavigate } from 'react-router-dom'
 import Notice from '../../components/Notice'
 import {connect} from 'react-redux'
-import User from '../../middleware/users'
 const Register = (props) => {
     const { t } = useTranslation()
-    let history = useNavigate()
 
-    useEffect(()=>{
-        document.title = "TODO | Register"
-    })
 
     //Form handle
     const [email, setEmail] = useState("")
@@ -48,12 +43,12 @@ const Register = (props) => {
         const verifyUsername = await Handle.findUsername(username)
         const verifyEmail = await Handle.findEmail(email)
         if(verifyEmail){
-            newToast("Email is exist!", true)
+            newToast(t("msg.emailExist"), true)
             setLoader(false)
             return false
         }
         if(verifyUsername){
-            newToast("Username is already taken!", true)
+            newToast(t("msg.usernameExist"), true)
             setLoader(false)
             return false
         }
@@ -67,11 +62,11 @@ const Register = (props) => {
      */
     const verifyPassword = () =>{
         if(!password || !passwordConfirm){
-            newToast("You cannot leave password blank!", true)
+            newToast(t("msg.passwordBlank"), true)
             return false
         }
         if(password !== passwordConfirm){
-            newToast("Password not matches", true)
+            newToast(t("msg.passwordNotmatch"), true)
             return false
         }
         return true
@@ -98,6 +93,9 @@ const Register = (props) => {
 
     return (
         <div className="register flex justify-center mt-5">
+            <Helmet>
+                <title>TODO | {t("documentTitle.register")}</title>
+            </Helmet>
             <div className="flex flex-col gap-5 w-[70%] border-primary-500 border-2 border-solid rounded-md p-5">
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {t("register.title")}
