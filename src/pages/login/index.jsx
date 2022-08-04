@@ -1,8 +1,7 @@
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
-import { Button, Label, TextInput } from "flowbite-react"
+import { Button, Label, TextInput, Spinner } from "flowbite-react"
 import Handle from './handle'
-import { useNavigate } from "react-router-dom"
 import { sha256 } from "js-sha256"
 import { useEffect, useState } from "react"
 import {connect} from 'react-redux'
@@ -16,12 +15,14 @@ const Login = (props) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [isLoad, setIsload] = useState(false)
 
 
     /**
      * 
      */
     const login = async () =>{ 
+        setIsload(true)
         if(email && password){
             const verifyUser = {email: email, password: sha256(password)}
             const user = await Handle.login(verifyUser)
@@ -30,6 +31,7 @@ const Login = (props) => {
                 props.login({username: user._username, emial: user._email})
             }
         }
+        setIsload(false)
     }
 
     return (
@@ -72,7 +74,7 @@ const Login = (props) => {
                         />
                     </div>
                     <Button onClick={()=>login()}>
-                    {t("login.login")}
+                    {isLoad ? <Spinner/> : t("login.login")}
                     </Button>
                     <Link
                         to="/register"

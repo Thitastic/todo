@@ -39,11 +39,10 @@ const App = (props) =>{
   //checking user first open
   const checkUser = async () =>{
     const token = localStorage.getItem("token")
-    const newToken = await User.loginToken(token)
-    console.log(">>>> NEW TOKEN >>> " ,newToken)
-    if(newToken){
-      localStorage.setItem("token", newToken)
-      props.auth(true)
+    const user = await User.loginToken(token)
+    if(user.length > 0){
+      localStorage.setItem("token", user[0]._token)
+      props.login({username: user[0]._username, email: user[0]._email})
     }
     else{
       props.auth(false)
@@ -100,6 +99,7 @@ const mapStateToProps = (state) =>{
 
 const mapDispathToProps = (dispatch)=>{
     return{
+      login: (user) => dispatch({type: "USER_LOGIN", payload: user}),
       auth : (bool) => dispatch({type: "USER_AUTH", payload: bool})
     } 
 }

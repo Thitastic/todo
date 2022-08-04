@@ -1,9 +1,9 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next'
 
-import translationVI from '../locales/vi/translation'
-import translationEN from '../locales/en/translation'
-import translationKR from '../locales/kr/translation'
+import translationVI from '../locales/vi.json'
+import translationEN from '../locales/en.json'
+import translationKR from '../locales/kr.json'
 
 
 // the translations

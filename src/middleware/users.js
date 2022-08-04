@@ -51,7 +51,7 @@ class User {
     static async loginToken(token){
         if(token === "") return 0
         try {
-            const res = await axios.post("http://localhost:1009/api/user/login/t", {token: token})
+            const res = await axios.post("http://localhost:1009/api/user/login/token", {token: token})
             if(res.status === 200){
                 return res.data
             }
@@ -63,7 +63,7 @@ class User {
 
     static async login(user){
         try {
-            const res = await axios.post("http://localhost:1009/api/user/login/s", {user: user})
+            const res = await axios.post("http://localhost:1009/api/user/login/", {user: user})
             if(res.status === 200){
                 return res.data
             }

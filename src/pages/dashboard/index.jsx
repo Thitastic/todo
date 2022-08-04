@@ -1,32 +1,37 @@
 import { useEffect, useState } from 'react'
 import Todo from '../../components/Todo'
-import { useNavigate } from 'react-router-dom'
 import Handle from './handle'
 import { connect } from 'react-redux'
+import Empty from '../../components/Empty'
+import Skeleton from '../../components/Skeleton'
 const Dashboard = (props) => {
 
     const [todos, setTodos] = useState([])
-    const [todoEl, setTodoEl] = useState([])
+    const [isLoad, setIsload] = useState(false)
 
     useEffect(() => {
-        const initView = async () => {
+        const fetchData = async () => {
+            setIsload(true)
             setTodos(await Handle.getTodo(props.user.username))
-            if(todos.length > 0) return
-            let list = []
-            if(todos){
-                list = todos.map((element) => 
+            setIsload(false)
+        }
+        fetchData()
+    }, [props.user.username])
+
+    const initView = () => {
+        let list = []
+        if (todos.length > 0) {
+            list = todos.map((element) =>
                 <Todo
                     todo={element} />
-                
+
             )
-            }
-            else{
-                list = "(No Todo found)"
-            }
-            setTodoEl(list)
         }
-        initView()
-    },[props.user.username,todos])
+        else {
+            list = <Empty link="/new" />
+        }
+        return list
+    }
 
 
 
@@ -34,7 +39,7 @@ const Dashboard = (props) => {
 
     return (
         <>
-        {todoEl}
+            {isLoad ? <Skeleton /> : initView()}
         </>
     )
 }
