@@ -6,7 +6,6 @@ class User {
             return response
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
     static getAll(){
@@ -33,7 +32,6 @@ class User {
             }
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
     static async findEmail(email){
@@ -44,7 +42,6 @@ class User {
             }
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
 
@@ -57,7 +54,6 @@ class User {
             }
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
 
@@ -69,7 +65,6 @@ class User {
             }
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
     
@@ -81,7 +76,6 @@ class User {
             }
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
 

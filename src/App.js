@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import i18n from './translation/i18n'
 import {Routes, Route, Navigate} from 'react-router-dom'
 
@@ -12,7 +12,6 @@ import User from './middleware/users'
 import Edit from './pages/edit'
 import Test from './pages/test'
 
-import { useNavigate } from 'react-router-dom'
 
 import './App.css'
 import { connect } from 'react-redux'
@@ -72,6 +71,7 @@ const App = (props) =>{
 
          <Route 
             path='/dashboard' 
+            title="TODO | Dashboard"
             element={props.userAuth ? <Dashboard /> : <Navigate to="/login" replace/>}
           />
 

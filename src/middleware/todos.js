@@ -7,7 +7,6 @@ class Todos{
             return response
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
     static async addTodo(todo){
@@ -16,7 +15,6 @@ class Todos{
             return response.data
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
 
@@ -27,7 +25,6 @@ class Todos{
             return response
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
 
@@ -37,7 +34,6 @@ class Todos{
             return response
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
 
@@ -47,7 +43,6 @@ class Todos{
             return response
         } catch (error) {
             console.error(error)
-            return 0
         }
     }
 }
